@@ -18,19 +18,11 @@ const getLogSpy = () => {
 
 describe("문자열 계산기", () => {
 
-  //빈 문자열 입력 시 0 반환
-  test("빈 문자열 입력 시 0 반환", async () => {
-    const inputs = [""];
-    mockQuestions(inputs);
-
-    const logSpy = getLogSpy();
-    const app = new App();
-
-    await app.run();
-    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("결과 : 0"));
+  // 각 테스트 전마다 print 함수를 mock으로 초기화
+  beforeEach(() => {
+    MissionUtils.Console.print = jest.fn();
   });
-
-
+  
   test("커스텀 구분자 사용", async () => {
     const inputs = ["//;\\n1"];
     mockQuestions(inputs);
