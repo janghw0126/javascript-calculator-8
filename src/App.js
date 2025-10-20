@@ -16,6 +16,10 @@ class App {
         }
     // 계산기 함수 선언하기
   calculate(input) {
+    // 1-1. 빈 문자열을 입력받은 경우
+      if (input === "") {
+        return 0;
+      }
       
     }
 }
