@@ -14,6 +14,10 @@ class App {
             throw error;
           }
         }
+    // 계산기 함수 선언하기
+  calculate(input) {
+      
+    }
 }
 
 export default App;
