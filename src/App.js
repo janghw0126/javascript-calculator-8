@@ -77,6 +77,11 @@ class App {
           throw new Error("[ERROR] 지정된 구분자가 아닙니다.");
         }
 
+        // 숫자와 구분자의 순서가 잘못된 경우
+        if (!/^[0-9]/.test(input)) {
+          throw new Error("[ERROR] 숫자와 구분자의 순서가 잘못되었습니다.");
+        }
+
         // 정규 표현식 사용해서 쉼표(,) 또는 콜론(:) 기준으로 문자열 분리
         let numbers = input.split(/,|:/);
 
