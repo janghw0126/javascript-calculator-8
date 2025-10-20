@@ -24,6 +24,13 @@ describe("문자열 계산기", () => {
     MissionUtils.Console.print = jest.fn();
   });
 
+  test("빈 문자열 입력 시 0 반환", async () => {
+    mockQuestions([""]);
+    const app = new App();
+    await app.run();
+    expect(MissionUtils.Console.print).toHaveBeenCalledWith(expect.stringContaining("결과 : 0"));
+  });
+
   test("커스텀 구분자 사용", async () => {
     const inputs = ["//;\\n1"];
     mockQuestions(inputs);
