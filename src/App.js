@@ -86,7 +86,16 @@ class App {
         }
       }
 
-      
+       // 합 계산해주는 변수 선언하기
+      let sum = 0;
+
+      // 입력받은 수 합하여 출력하기
+      for (let i = 0; i < real_numbers.length; i++) {
+        sum += real_numbers[i];
+      }
+
+      // 결과 반환
+      return sum;
     }
 }
 
