@@ -56,6 +56,11 @@ class App {
           throw new Error("[ERROR] 숫자와 구분자의 순서가 잘못되었습니다.");
         }
 
+        // 숫자만 입력된 경우
+        if(!isNaN(parts[1])){
+          return Number(parts[1]);
+        }
+
         // 구분자를 기준으로 숫자 분리
         const numbers = parts[1].split(delimeter);
 
@@ -85,6 +90,10 @@ class App {
       // 2-2. 빈 문자열이 아닌 경우
       // (2) 기본 구분자 사용한 경우
       else {
+        // 숫자만 입력된 경우
+        if(!isNaN(input)){
+          return Number(input);
+        }
 
         // 지정된 구분자가 아닌 경우
         if (!input.includes(",") && !input.includes(":")) {
