@@ -41,6 +41,11 @@ class App {
         // 커스텀 구분자 추출
         const delimeter = parts[0].slice(2);
 
+        // 구분자가 비어 있는 경우
+        if (delimeter === "") {
+          throw new Error("[ERROR] 구분자가 비어있습니다.");
+        }
+
         // 구분자로 입력이 끝나는 경우
         if(parts[1].endsWith(delimeter)){
           throw new Error("[ERROR] 구분자로 입력이 끝날 수 없습니다.");
