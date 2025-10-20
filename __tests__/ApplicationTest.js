@@ -102,6 +102,7 @@ describe("문자열 계산기", () => {
     await expect(app.run()).rejects.toThrow("[ERROR]");
   });
 
+  // 구분자로 끝날 때 예외 발생한 경우
   test("구분자로 끝날 때 예외 발생", async () => {
     mockQuestions(["1,2,3,"]);
     const app = new App();
