@@ -41,6 +41,11 @@ class App {
         // 커스텀 구분자 추출
         const delimeter = parts[0].slice(2);
 
+        // 구분자로 입력이 끝나는 경우
+        if(parts[1].endsWith(delimeter)){
+          throw new Error("[ERROR] 구분자로 입력이 끝날 수 없습니다.");
+        }
+
         // 구분자가 두 글자 이상인 경우
         if (delimeter.length > 1) {
           throw new Error("[ERROR] 구분자가 2개 이상 지정되었습니다.");
@@ -85,6 +90,11 @@ class App {
         // 숫자와 구분자의 순서가 잘못된 경우
         if (!/^[0-9]/.test(input)) {
           throw new Error("[ERROR] 숫자와 구분자의 순서가 잘못되었습니다.");
+        }
+
+        // 구분자로 입력이 끝나는 경우
+        if(input.endsWith(',') || input.endsWith(":")){
+          throw new Error("[ERROR] 구분자로 입력이 끝날 수 없습니다.");
         }
 
         // 정규 표현식 사용해서 쉼표(,) 또는 콜론(:) 기준으로 문자열 분리
