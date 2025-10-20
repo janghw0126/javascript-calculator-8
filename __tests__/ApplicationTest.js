@@ -94,4 +94,13 @@ describe("문자열 계산기", () => {
     const app = new App();
     await expect(app.run()).rejects.toThrow("[ERROR]");
   });
+
+  // 구분자 사이 빈 값이 있을 때 예외 발생한 경우
+  test("구분자만 입력 시 예외 발생", async () => {
+    mockQuestions([",,,"]);
+    const app = new App();
+    await expect(app.run()).rejects.toThrow("[ERROR]");
+  });
+
+
 });
