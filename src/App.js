@@ -23,7 +23,7 @@ class App {
       if (input === "") {
         return 0;
       }
-      
+
       // 숫자를 저장할 배열
       let real_numbers = [];
 
@@ -73,6 +73,7 @@ class App {
       else {
         // 정규 표현식 사용해서 쉼표(,) 또는 콜론(:) 기준으로 문자열 분리
         let numbers = input.split(/,|:/);
+
 
         // 문자열을 숫자로 변환
         for (let i = 0; i < numbers.length; i++) {
