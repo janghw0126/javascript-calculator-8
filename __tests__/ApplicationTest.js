@@ -40,7 +40,7 @@ describe("문자열 계산기", () => {
     expect(MissionUtils.Console.print).toHaveBeenCalledWith(expect.stringContaining("결과 : 5"));
   });
 
-  // 쉼표, 구분자 사용한 경우 테스트 추가
+  // 쉼표, 구분자 사용한 경우
   test("쉼표 구분자 사용", async () => {
     mockQuestions(["1,2,3"]);
     const app = new App();
@@ -48,7 +48,7 @@ describe("문자열 계산기", () => {
     expect(MissionUtils.Console.print).toHaveBeenCalledWith(expect.stringContaining("결과 : 6"));
   });
 
-  // 콜론 구분자 사용한 경우 테스트 추가
+  // 콜론 구분자 사용한 경우 
   test("콜론 구분자 사용", async () => {
     mockQuestions(["1:2:3"]);
     const app = new App();
@@ -56,7 +56,7 @@ describe("문자열 계산기", () => {
     expect(MissionUtils.Console.print).toHaveBeenCalledWith(expect.stringContaining("결과 : 6"));
   });
 
-  // 쉼표와 콜론 혼합 사용한 경우 테스트 추가
+  // 쉼표와 콜론 혼합 사용한 경우 
   test("쉼표와 콜론 혼합 사용", async () => {
     mockQuestions(["1,2:3"]);
     const app = new App();
@@ -85,6 +85,13 @@ describe("문자열 계산기", () => {
 
     const app = new App();
 
+    await expect(app.run()).rejects.toThrow("[ERROR]");
+  }); 
+
+  // 음수 입력 시 예외 발생한 경우
+  test("음수 입력 시 예외 발생", async () => {
+    mockQuestions(["-1,2,3"]);
+    const app = new App();
     await expect(app.run()).rejects.toThrow("[ERROR]");
   });
 });
