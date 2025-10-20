@@ -24,11 +24,20 @@ describe("문자열 계산기", () => {
     MissionUtils.Console.print = jest.fn();
   });
 
+  // 빈 문자열 입력시 0 반환
   test("빈 문자열 입력 시 0 반환", async () => {
     mockQuestions([""]);
     const app = new App();
     await app.run();
     expect(MissionUtils.Console.print).toHaveBeenCalledWith(expect.stringContaining("결과 : 0"));
+  });
+
+  // 구분자 없이 숫자만 입력한 경우
+  test("구분자 없이 숫자만 입력한 경우", async () => {
+    mockQuestions(["5"]);
+    const app = new App();
+    await app.run();
+    expect(MissionUtils.Console.print).toHaveBeenCalledWith(expect.stringContaining("결과 : 5"));
   });
 
   test("커스텀 구분자 사용", async () => {
