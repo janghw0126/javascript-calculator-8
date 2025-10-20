@@ -4,12 +4,12 @@ class App {
   async run() { 
     // 전체 프로그램 실행을 담당
     try{
-      // 1. 사용자로부터 문자열 입력 받기
+      // 1. 프로그램 실행 함수(run)에서 문자열을 입력받는다.
       const input = await Console.readLineAsync("덧셈할 문자열을 입력해주세요.");
-      // 입력값의 공백 제거 후 계산 수행
+      // 입력값의 공백 제거 후 calculate 함수 수행
       const result = this.calculate(input.trim());
 
-      // 4. 결과 출력
+      // 5. 합산된 결과를 출력한다.
       Console.print(`결과 : ${result}`);
     } catch(error){
       // 에러 발생 시 메시지 출력 후 프로그램 종료
@@ -17,16 +17,17 @@ class App {
       throw error;
     }
   }
-  // 문자열 덧셈 계산기 메서드
+  // 2. 입력값을 처리하기 위한 계산 함수(calculate)를 호출한다.
   calculate(input) {
-    // 1-1. 빈 문자열 입력 시 0 반환
+    // 2-1. 빈 문자열을 입력 받은 경우 0 반환
       if (input === "") {
         return 0;
       }
+      
       // 숫자를 저장할 배열
       let real_numbers = [];
 
-      // 1-2. 빈 문자열이 아닌 경우
+      // 2-2. 빈 문자열이 아닌 경우
       // (1) 커스텀 구분자로 지정한 경우
       if (input.slice(0, 2) === "//") {
         // 커스텀 구분자와 숫자 부분 분리
@@ -48,7 +49,7 @@ class App {
         // 구분자를 기준으로 숫자 분리
         const numbers = parts[1].split(delimeter);
 
-        // 3. 예외 처리: 빈 값, 숫자 아님, 음수 입력
+        // 3. 예외 검증: 빈 값, 숫자 아님, 음수 입력
         for (let i = 0; i < numbers.length; i++) {
           if (numbers[i] === "") {
             throw new Error("[ERROR] 빈 값이 있습니다.");
@@ -67,7 +68,7 @@ class App {
         }
       }
 
-      // 1-2. 빈 문자열이 아닌 경우
+      // 2-2. 빈 문자열이 아닌 경우
       // (2) 기본 구분자 사용한 경우
       else {
         // 정규 표현식 사용해서 쉼표(,) 또는 콜론(:) 기준으로 문자열 분리
@@ -78,7 +79,7 @@ class App {
           real_numbers.push(Number(numbers[i]));
         }        
 
-        // 3. 예외 처리: 빈 값, 숫자 아님, 음수 입력
+        // 3. 예외 검증: 빈 값, 숫자 아님, 음수 입력
         for (let i = 0; i < numbers.length; i++) {
           if (numbers[i] === "") {
             throw new Error("[ERROR] 빈 값이 있습니다.");
@@ -92,7 +93,7 @@ class App {
         }
       }
 
-      // 합 계산
+      // 4. 검증이 완료된 숫자들을 모두 더한다.
       let sum = 0;
       for (let i = 0; i < real_numbers.length; i++) {
         sum += real_numbers[i];
