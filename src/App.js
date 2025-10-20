@@ -46,6 +46,11 @@ class App {
           throw new Error("[ERROR] 구분자가 2개 이상 지정되었습니다.");
         }
 
+        // 숫자와 구분자의 순서가 잘못된 경우
+        if (!/^[0-9]/.test(parts[1])) {
+          throw new Error("[ERROR] 숫자와 구분자의 순서가 잘못되었습니다.");
+        }
+
         // 구분자를 기준으로 숫자 분리
         const numbers = parts[1].split(delimeter);
 
