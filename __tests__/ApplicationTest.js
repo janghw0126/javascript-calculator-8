@@ -19,10 +19,11 @@ const getLogSpy = () => {
 describe("문자열 계산기", () => {
 
   // 각 테스트 전마다 print 함수를 mock으로 초기화
+  // 각 테스트 시작 전에 Console.print를 새로 리셋
   beforeEach(() => {
     MissionUtils.Console.print = jest.fn();
   });
-  
+
   test("커스텀 구분자 사용", async () => {
     const inputs = ["//;\\n1"];
     mockQuestions(inputs);
