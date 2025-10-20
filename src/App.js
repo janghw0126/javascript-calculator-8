@@ -62,6 +62,29 @@ class App {
           real_numbers.push(Number(numbers[i]));
         }
       }
+      // (2) 기본 구분자 사용한 경우
+      else {
+        // 정규 표현식!!! 싱기해 사용해서 문자열 쪼개기
+        let numbers = input.split(/,|:/);
+
+        // 숫자로 바꾸기
+        for (let i = 0; i < numbers.length; i++) {
+          real_numbers.push(Number(numbers[i]));
+        }
+
+        // 숫자가 아닌 문자를 입력받을 경우
+        for (let i = 0; i < numbers.length; i++) {
+          if (numbers[i] === "") {
+            throw new Error("[ERROR] 빈 값이 있습니다.");
+          }
+          if (isNaN(numbers[i])) {
+            throw new Error("[ERROR] 입력받은 값은 숫자가 아닌 문자입니다.");
+          }
+          if (Number(numbers[i]) < 0) {
+            throw new Error("[ERROR] 입력받은 값은 음수입니다.");
+          }
+        }
+      }
 
       
     }
