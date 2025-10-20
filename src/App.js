@@ -59,11 +59,15 @@ class App {
         // 구분자를 기준으로 숫자 분리
         const numbers = parts[1].split(delimeter);
 
-        // 3. 예외 검증: 빈 값, 숫자 아님, 음수 입력
-        for (let i = 0; i < numbers.length; i++) {
-          if (numbers[i] === "") {
+        // 구분자 사이에 숫자가 없는 경우 (빈 문자열 검사)
+        for(let i =0 ; i < numbers.length; i++ ){
+        if (numbers[i] === "") {
             throw new Error("[ERROR] 빈 값이 있습니다.");
           }
+        }
+
+        // 3. 예외 검증: 빈 값, 숫자 아님, 음수 입력
+        for (let i = 0; i < numbers.length; i++) {
           if (isNaN(numbers[i])) {
             throw new Error("[ERROR] 입력받은 값은 숫자가 아닌 문자입니다.");
           }
@@ -92,14 +96,20 @@ class App {
           throw new Error("[ERROR] 숫자와 구분자의 순서가 잘못되었습니다.");
         }
 
+        // 정규 표현식 사용해서 쉼표(,) 또는 콜론(:) 기준으로 문자열 분리
+        let numbers = input.split(/,|:/);
+
+        // 구분자 사이에 숫자가 없는 경우 (빈 문자열 검사)
+        for (let i = 0; i < numbers.length; i++) {
+          if (numbers[i] === "") {
+            throw new Error("[ERROR] 빈 값이 있습니다.");
+            }
+        }
+
         // 구분자로 입력이 끝나는 경우
         if(input.endsWith(',') || input.endsWith(":")){
           throw new Error("[ERROR] 구분자로 입력이 끝날 수 없습니다.");
         }
-
-        // 정규 표현식 사용해서 쉼표(,) 또는 콜론(:) 기준으로 문자열 분리
-        let numbers = input.split(/,|:/);
-
 
         // 문자열을 숫자로 변환
         for (let i = 0; i < numbers.length; i++) {
@@ -108,9 +118,6 @@ class App {
 
         // 3. 예외 검증: 빈 값, 숫자 아님, 음수 입력
         for (let i = 0; i < numbers.length; i++) {
-          if (numbers[i] === "") {
-            throw new Error("[ERROR] 빈 값이 있습니다.");
-          }
           if (isNaN(numbers[i])) {
             throw new Error("[ERROR] 입력받은 값은 숫자가 아닌 문자입니다.");
           }
