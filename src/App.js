@@ -71,6 +71,12 @@ class App {
       // 2-2. 빈 문자열이 아닌 경우
       // (2) 기본 구분자 사용한 경우
       else {
+
+        // 지정된 구분자가 아닌 경우
+        if (!input.includes(",") && !input.includes(":")) {
+          throw new Error("[ERROR] 지정된 구분자가 아닙니다.");
+        }
+
         // 정규 표현식 사용해서 쉼표(,) 또는 콜론(:) 기준으로 문자열 분리
         let numbers = input.split(/,|:/);
 
